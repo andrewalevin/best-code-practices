@@ -7,7 +7,7 @@
 
 ### Call Function name
 
-python```
+```python
 
 LOG_FORMAT_CALLED_FUNCTION = Template('💈 ${fname}():')
 
