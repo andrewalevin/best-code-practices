@@ -75,4 +75,72 @@ https://pypi.org/project/humanize/
 ```
 
 
+## Handle SIGTSTP and SIGINT with asyncio 
+
+This script demonstrates how to handle Unix signals (SIGTSTP for Ctrl+Z and SIGINT for Ctrl+C) in an asynchronous Python program using asyncio. It sets up custom handlers for these signals to manage program termination or interruption gracefully, ensuring cleanup of resources.
+
+```python
+
+import asyncio
+import signal
+
+# Event to signal program shutdown
+shutdown_event = asyncio.Event()
+
+# Asynchronous signal handler function
+async def handle_interrupt_or_suspend(signum):
+    """
+    Handles received signals.
+    - SIGTSTP (Ctrl+Z): Inform the user that suspending is disabled.
+    - SIGINT (Ctrl+C): Signal program shutdown and perform graceful cleanup.
+    """
+    if signum == signal.SIGTSTP:
+        print("\nReceived SIGTSTP (Ctrl+Z). Suspending is disabled.")
+    elif signum == signal.SIGINT:
+        print("\nReceived SIGINT (Ctrl+C). Exiting gracefully.")
+        shutdown_event.set()  # Notify the main loop to terminate
+
+# Function to set up signal handlers
+def setup_signal_handlers(loop):
+    """
+    Registers custom signal handlers for SIGTSTP and SIGINT.
+    Handlers run the asynchronous `handle_interrupt_or_suspend` function
+    using the provided event loop.
+    """
+    def handler(signum, frame):
+        asyncio.run_coroutine_threadsafe(handle_interrupt_or_suspend(signum), loop)
+
+    # Register the custom handlers for signals
+    signal.signal(signal.SIGTSTP, handler)
+    signal.signal(signal.SIGINT, handler)
+
+# Main asynchronous function
+async def main():
+    """
+    Main program loop that runs indefinitely until a shutdown signal is received.
+    """
+    print("Press Ctrl+C to exit or Ctrl+Z to test SIGTSTP handling.")
+    try:
+        while not shutdown_event.is_set():
+            print("Running... Press Ctrl+C to stop.")
+            await asyncio.sleep(2)  # Simulate some ongoing work
+    finally:
+        print("Cleaning up...")  # Perform any cleanup before exiting
+
+if __name__ == "__main__":
+    # Create and set up a new event loop
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)  # Set the event loop as the current loop
+    setup_signal_handlers(loop)   # Configure signal handlers
+
+    try:
+        # Start the main asynchronous program
+        loop.run_until_complete(main())
+    finally:
+        # Close the event loop on program termination
+        loop.close()
+
+```
+
+
 
