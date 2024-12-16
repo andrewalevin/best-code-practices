@@ -2,6 +2,29 @@
 
 
 
+## 16 Dec 2024. SVG as favicon to HTML web page
+
+How to add svg favicon to HTML
+
+Simple curcle below
+
+```html
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='deepskyblue'/></svg>">
+    
+```
+
+To prepare make steps:
+
+- Photot to SVG Converter
+
+- https://svgomg.net/
+
+![IMAGE 2024-12-16 03:09:16](https://github.com/user-attachments/assets/724b3a03-0e94-41aa-81d5-9fa1c524a525)
+
+
+
+
+
 
 ## Python
 
