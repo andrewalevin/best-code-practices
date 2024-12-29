@@ -1,6 +1,12 @@
 # 👨‍💻 Best Code Practices
 
 
+## 29 Dec 2024. GPX geo velo
+
+https://gpxplanner.app/
+
+![2024-12-30 01 35 46](https://github.com/user-attachments/assets/7276fa57-c97c-42cd-8b80-7bbb6674f23f)
+
 
 ## 16 Dec 2024. SVG as favicon to HTML web page
 
