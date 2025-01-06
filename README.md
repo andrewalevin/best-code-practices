@@ -1,6 +1,18 @@
 # 👨‍💻 Best Code Practices
 
 
+## 09 Jan 2025. Env bash
+
+```bash
+export $(grep -v '^#' .env | xargs)
+```
+
+Using the export $(grep -v '^#' .env | xargs) command in a Bash script is a lightweight and efficient way to load environment variables from a .env file directly into the shell session. This approach avoids the need for additional dependencies or scripts, such as a dedicated load_env function or external libraries.
+
+The command works by reading the .env file, ignoring lines that start with # (comments), and exporting the remaining key-value pairs as environment variables. It ensures simplicity and compatibility with various shell environments, making it ideal for quick setups or containerized applications. Additionally, it keeps the environment management straightforward and reduces complexity in application code.
+
+
+
 ## 29 Dec 2024. GPX geo velo
 
 https://gpxplanner.app/
