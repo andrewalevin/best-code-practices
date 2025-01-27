@@ -1,6 +1,18 @@
 # 👨‍💻 Best Code Practices
 
 
+## 27 Jan 2025. GPX Studio 
+
+https://gpx.studio/
+
+
+![2025-01-27 05 07 51](https://github.com/user-attachments/assets/f0b627e8-0b0c-44ef-aa92-6820c4494151)
+
+![2025-01-27 05 09 52](https://github.com/user-attachments/assets/5d0a0a98-2771-4f0b-af58-2224dd91d56f)
+
+
+
+
 ## 09 Jan 2025. Env bash
 
 ```bash
