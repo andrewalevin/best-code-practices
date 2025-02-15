@@ -1,6 +1,21 @@
 # 👨‍💻 Best Code Practices
 
 
+## 15 Feb 1025. PyPi
+
+Протестируй упаковку перед загрузкой
+
+```python
+
+pip install twine
+
+rm -rf dist/
+poetry build
+twine check dist/*
+
+
+```
+
 ## 27 Jan 2025. GPX Studio 
 
 https://gpx.studio/
